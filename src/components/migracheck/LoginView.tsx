@@ -41,7 +41,7 @@ export function LoginView({
         </div>
 
         <p className="w-full text-center text-xs text-institutional-foreground/50">
-          Versión 1
+          Plataforma oficial conforme al Decreto Ley 3 de 2008 · Versión 1.0
         </p>
 
         {/* subtle decorative grid */}
