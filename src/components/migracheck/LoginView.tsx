@@ -40,8 +40,8 @@ export function LoginView({
           </p>
         </div>
 
-        <p className="text-xs text-institutional-foreground/50">
-          Plataforma oficial conforme al Decreto Ley 3 de 2008 · v2.4.1
+        <p className="w-full text-center text-xs text-institutional-foreground/50">
+          Versión 1
         </p>
 
         {/* subtle decorative grid */}
