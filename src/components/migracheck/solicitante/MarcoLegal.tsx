@@ -1,24 +1,22 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Scale, FileText, ShieldCheck, Gavel } from "lucide-react";
+import { Scale } from "lucide-react";
 
-const ARTICLES = [
+const ARTICULOS = [
   {
-    icon: ShieldCheck,
-    art: "Art. 28",
-    title: "Residencia temporal",
-    body: "Permite la permanencia hasta por seis (6) años. Requiere antecedentes vigentes y solvencia mínima de USD 500.",
+    art: "Artículo 15",
+    body: "Faculta la reglamentación de las condiciones y requisitos que deben cumplirse para aplicar a las categorías migratorias.",
   },
   {
-    icon: FileText,
-    art: "Art. 38",
-    title: "Residencia permanente",
-    body: "Otorgada a quienes han mantenido residencia temporal por al menos dos años continuos sin observaciones.",
+    art: "Artículo 43 (Numeral 2)",
+    body: "Establece como requisito obligatorio para ingresar al territorio nacional presentar pasaporte o documento de viaje vigente.",
   },
   {
-    icon: Gavel,
-    art: "Art. 50",
-    title: "Causales de inadmisibilidad",
-    body: "El SNM podrá rechazar la entrada por antecedentes penales, alertas internacionales o documentación falsa.",
+    art: "Artículo 50 (Numeral 1)",
+    body: "Permite negar el ingreso a extranjeros que no cuenten con la solvencia económica para sufragar sus gastos de manutención.",
+  },
+  {
+    art: "Artículo 50 (Numerales 4 y 5)",
+    body: "Establece como causal de rechazo de ingreso el tener antecedentes penales del país de origen o constituir un riesgo a la seguridad nacional.",
   },
 ];
 
@@ -32,32 +30,37 @@ export function MarcoLegal() {
               <Scale className="h-5 w-5 text-institutional" />
             </div>
             <div>
-              <CardTitle className="font-serif">Decreto Ley 3 de 2008</CardTitle>
-              <p className="text-sm text-muted-foreground">Crea el Servicio Nacional de Migración y dicta normas sobre migración.</p>
+              <CardTitle className="font-serif">Decreto Ley 3 del 22 de febrero de 2008</CardTitle>
+              <p className="text-sm text-muted-foreground">
+                Gaceta Oficial 25986 — Servicio Nacional de Migración de Panamá
+              </p>
             </div>
           </div>
         </CardHeader>
         <CardContent className="text-sm leading-relaxed text-foreground/80">
-          El presente decreto regula la entrada, permanencia y salida de extranjeros del territorio nacional,
-          definiendo categorías migratorias, derechos, obligaciones y mecanismos de control fronterizo conforme
-          a los principios constitucionales de la República de Panamá.
+          El diseño y las validaciones de negocio del sistema SIDEM-PAN se fundamentan estrictamente
+          en el Decreto Ley 3 del 22 de febrero de 2008:
         </CardContent>
       </Card>
 
-      <div className="grid gap-4 md:grid-cols-3">
-        {ARTICLES.map((a) => (
+      <div className="space-y-3">
+        {ARTICULOS.map((a) => (
           <Card key={a.art} className="shadow-md">
-            <CardHeader>
-              <div className="flex items-center gap-2 text-gold-foreground">
-                <a.icon className="h-4 w-4 text-institutional" />
-                <span className="text-xs font-bold uppercase tracking-wider text-institutional">{a.art}</span>
+            <CardContent className="flex gap-4 pt-6">
+              <div className="mt-1 h-2 w-2 shrink-0 rounded-full bg-institutional" />
+              <div>
+                <p className="font-serif text-sm font-bold text-institutional">{a.art}</p>
+                <p className="mt-1 text-sm leading-relaxed text-foreground/80">{a.body}</p>
               </div>
-              <CardTitle className="text-base">{a.title}</CardTitle>
-            </CardHeader>
-            <CardContent className="text-sm text-muted-foreground">{a.body}</CardContent>
+            </CardContent>
           </Card>
         ))}
       </div>
+
+      <footer className="border-t border-border pt-6 text-center text-xs text-muted-foreground">
+        <p className="font-medium">versión 1</p>
+        <p className="mt-1">© 2026 Servicio Nacional de Migración. Todos los derechos reservados.</p>
+      </footer>
     </div>
   );
 }
