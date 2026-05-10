@@ -50,11 +50,12 @@ export function MetricasSNM() {
         <CardContent>
           <div className="h-[320px] w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={DATA}>
+              <BarChart data={DATA} margin={{ top: 10, right: 16, left: 0, bottom: 8 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="oklch(0.9 0.01 255)" />
                 <XAxis dataKey="mes" stroke="oklch(0.5 0.03 257)" fontSize={12} />
                 <YAxis stroke="oklch(0.5 0.03 257)" fontSize={12} />
                 <Tooltip
+                  cursor={{ fill: "oklch(0.95 0.01 255)" }}
                   contentStyle={{
                     backgroundColor: "oklch(0.22 0.08 260)",
                     border: "none",
@@ -62,9 +63,25 @@ export function MetricasSNM() {
                     color: "white",
                     fontSize: 12,
                   }}
+                  labelStyle={{ color: "white", fontWeight: 600, marginBottom: 4 }}
+                  itemStyle={{ color: "white" }}
+                  formatter={(value: number, name: string) => [
+                    value.toLocaleString(),
+                    name === "aprobados" ? "Aprobados" : "Rechazados",
+                  ]}
                 />
-                <Bar dataKey="aprobados" fill="oklch(0.22 0.08 260)" radius={[4, 4, 0, 0]} />
-                <Bar dataKey="rechazados" fill="oklch(0.86 0.17 95)" radius={[4, 4, 0, 0]} />
+                <Legend
+                  verticalAlign="top"
+                  height={36}
+                  iconType="square"
+                  formatter={(value: string) => (
+                    <span className="text-xs text-foreground">
+                      {value === "aprobados" ? "Aprobados" : "Rechazados"}
+                    </span>
+                  )}
+                />
+                <Bar dataKey="aprobados" name="aprobados" fill="oklch(0.22 0.08 260)" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="rechazados" name="rechazados" fill="oklch(0.86 0.17 95)" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
